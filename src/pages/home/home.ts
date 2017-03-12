@@ -44,7 +44,7 @@ export class HomePage {
   {
     if(this.is_local()){
       GooglePlus.login({
-        'webClientId': 'USE-YOURS-HERE!!!!!.apps.googleusercontent.com',
+        'webClientId': '782451742975-78h0btvj1lvone99mrfv20je5nuir6p7.apps.googleusercontent.com',
         'offline': true
       }).then((obj) => {
         if (!firebase.auth().currentUser) {
