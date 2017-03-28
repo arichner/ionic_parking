@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
-import { NavController, AlertController, ActionSheetController, Platform } from 'ionic-angular';
+import { NavController, AlertController, ToastController, ActionSheetController, Platform } from 'ionic-angular';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
-import {GooglePlus} from 'ionic-native';
-import firebase from 'firebase'
+import {GooglePlus, BLE} from 'ionic-native';
+//import firebase from 'firebase';
 
 
 @Component({
@@ -15,25 +15,54 @@ export class HomePage {
   user: any = {};
   winobj: any = null; // maybe better understand injectables... see chrome tabs
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController,
-              public af: AngularFire, public actionSheetCtrl: ActionSheetController, private platform: Platform) {
+  constructor(private toastCtrl: ToastController, public navCtrl: NavController, public alertCtrl: AlertController,
+              public af: AngularFire, public actionSheetCtrl: ActionSheetController, private platform: Platform)
+  {
     this.winobj=window;
 
-    // suscription equivalent to onAuthStateChanged
-    this.af.auth.subscribe(user => {
-      if(user) {
-        alert('fire user logged in');
-        this.user = user;
-        this.songs = af.database.list('/songs');
-      }else {
-        alert('fire user logged out');
-        this.user = {};
-      }
+     //suscription equivalent to onAuthStateChanged
+    //this.af.auth.subscribe(user => {
+    //  if(user) {
+    //    alert('fire user logged in');
+    //    this.user = user;
+    //    this.songs = af.database.list('/songs');
+    //  }else {
+    //    alert('fire user logged out');
+    //    this.user = {};
+    //  }
+    //});
+
+// BLE test stuff
+
+    BLE.scan([], 5).subscribe(device => {
+      this.presentToast(JSON.stringify(device));
+      console.log(JSON.stringify(device));
+    }, error => {
+      console.log(error);
     });
+
 
   }
 
-  is_local(){
+
+
+  presentToast(message) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      position: 'middle',
+      showCloseButton: true,
+      closeButtonText: "ok"
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
+  }
+
+  is_local()
+  {
     if( /^file:\/{3}[^\/]/i.test(this.winobj.location.href) ){
       return true;
     }
@@ -82,7 +111,8 @@ export class HomePage {
     coolAlert.present();
   }
 
-  logout() {
+  logout()
+  {
     if(!this.is_local()){
       this.af.auth.logout();
     }else{
@@ -101,7 +131,8 @@ export class HomePage {
   }
 
 
-  addSong(){
+  addSong()
+  {
     let prompt = this.alertCtrl.create({
       title: 'Song Name',
       message: "Enter a name for this new song you're so keen on adding",
@@ -130,7 +161,9 @@ export class HomePage {
     });
     prompt.present();
   }
-  showOptions(songId, songTitle) {
+
+  showOptions(songId, songTitle)
+  {
     let actionSheet = this.actionSheetCtrl.create({
       title: 'What do you want to do?',
       buttons: [
@@ -156,7 +189,8 @@ export class HomePage {
     });
     actionSheet.present();
   }
-  removeSong(songId: string){
+  removeSong(songId: string)
+  {
     this.songs.remove(songId);
   }
   updateSong(songId, songTitle){
@@ -189,4 +223,8 @@ export class HomePage {
     });
     prompt.present();
   }
+
+
+
 }
+
