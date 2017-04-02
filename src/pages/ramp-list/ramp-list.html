@@ -14,5 +14,12 @@
 
 
 <ion-content padding>
-
+  <ion-card *ngFor="let ramp of ramps">
+	<ion-card-header>
+		{{ramp.name}}
+	</ion-card-header>
+	<ion-card-content>
+		Location: {{ramp.address}}
+	</ion-card-content>
+  </ion-card>
 </ion-content>

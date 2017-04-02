@@ -12,9 +12,17 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'ramp-list.html'
 })
 export class RampListPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
-
+  ramps: Array<any>;
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  	this.ramps = this.getRamps();
+  }
+  getRamps(){
+  	return [
+  		{"name":"Washington Ave Ramp", "address":"501 Washington Ave SE, Minneapolis, MN 55455"},
+  		{"name":"Church Street Garage", "address":"80 Church St SE, Minneapolis, MN 55455"},
+  		{"name":"East River Road Garage", "address":"385 East River Parkway, Minneapolis, MN 55455"}
+  	];
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad RampListPage');
   }

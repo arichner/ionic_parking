@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController, ToastController, ActionSheetController, Platform } from 'ionic-angular';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import {GooglePlus, BLE} from 'ionic-native';
+import {RampListPage} from '../ramp-list/ramp-list';
 //import firebase from 'firebase';
 
 
@@ -14,7 +15,7 @@ export class HomePage {
   songs: FirebaseListObservable<any>;
   user: any = {};
   winobj: any = null; // maybe better understand injectables... see chrome tabs
-
+  rampListPage = RampListPage;
   constructor(private toastCtrl: ToastController, public navCtrl: NavController, public alertCtrl: AlertController,
               public af: AngularFire, public actionSheetCtrl: ActionSheetController, private platform: Platform)
   {
