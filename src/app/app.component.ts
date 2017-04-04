@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
+import { RampListPage } from '../pages/ramp-list/ramp-list';
 
-import { HomePage } from '../pages/home/home';
 
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = HomePage;
+  rootPage = RampListPage;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {

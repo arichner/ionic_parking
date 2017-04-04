@@ -3,6 +3,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { RampListPage } from '../pages/ramp-list/ramp-list';
+import { RampDetailPage } from '../pages/ramp-detail/ramp-detail';
 
 // Import the AF2 Module
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
@@ -28,7 +29,8 @@ const myFirebaseAuthConfig = {
   declarations: [
     MyApp,
     HomePage,
-    RampListPage
+    RampListPage,
+    RampDetailPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -38,7 +40,8 @@ const myFirebaseAuthConfig = {
   entryComponents: [
     MyApp,
     HomePage,
-    RampListPage
+    RampListPage,
+    RampDetailPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

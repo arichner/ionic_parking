@@ -8,7 +8,5 @@
 
 <ion-content padding>
 
-  <div [hidden]="!(af.auth | async)">Hi {{ user.auth?.email }} <button ion-button outline (click)="logout()">Logout</button> </div>
-  <div [hidden]="af.auth | async"><button ion-button outline (click)="login()">Login</button></div>
   <div><button ion-button outline [navPush]="rampListPage">Ramp List</button></div>
 </ion-content>

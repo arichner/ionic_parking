@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { RampDetailPage } from '../ramp-detail/ramp-detail';
+
 /*
   Generated class for the RampList page.
 
@@ -26,5 +28,11 @@ export class RampListPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad RampListPage');
   }
+
+    view_details(ramp) {
+        this.navCtrl.push(RampDetailPage, {
+            ramp: ramp
+        });
+    }
 
 }

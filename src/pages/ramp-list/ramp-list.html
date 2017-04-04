@@ -7,14 +7,14 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>RampList</ion-title>
+    <ion-title>Ramp List</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-card *ngFor="let ramp of ramps">
+  <ion-card (click)="view_details(ramp)" *ngFor="let ramp of ramps">
 	<ion-card-header>
 		{{ramp.name}}
 	</ion-card-header>
