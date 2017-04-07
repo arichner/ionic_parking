@@ -7,22 +7,19 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Ramp Detail</ion-title>
+    <ion-title>{{ selectedRamp.name }}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <h2>{{ rampData?.name }}</h2>
-  <address>{{ rampData?.address }}</address>
-  <p>Price: {{rampData?.price}}</p>
-  <p>Capacity: {{rampData?.totalSpaces}}</p>
-  <h3>Hours</h3>
-  <ion-list *ngFor="let key of hoursKeys">
-    <ion-item>
-      {{ key }}
-      {{ rampData?.hours[key].open }} - {{ rampData?.hours[key].close }}
-    </ion-item>
-  </ion-list>
+  <h3>Rates</h3>
+  <p>Hourly Rate: ${{selectedRamp.hourlyRate}}</p>
+  <p>Daily Rate: ${{selectedRamp.dailyRate}}</p>
+  <p>Event Rate: ${{selectedRamp.eventRate}}</p>
+  <p>Capacity: {{selectedRamp.capacity}}</p>
+  <h3>Contact</h3>
+  <address>{{ selectedRamp.address }}</address>
+  <p>{{selectedRamp.phoneNumber}}</p>
 </ion-content>

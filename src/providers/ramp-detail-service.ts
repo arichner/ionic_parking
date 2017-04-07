@@ -16,7 +16,11 @@ export class RampDetailService {
     console.log('Hello RampDetailService Provider');
   }
 
-  getRampData(){
-      return this.http.get('/info').map(res => res.json());
+  getRampData(id){
+      return this.http.get('/ramps/'+id).map(res => res.json());
+  }
+
+  getRampsList(){
+    return this.http.get('/ramps').map(res => res.json());
   }
 }
