@@ -3,8 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { RampDetailPage } from '../ramp-detail/ramp-detail';
 import { RampDetailService } from '../../providers/ramp-detail-service';
-
-
+import { Geolocation } from '@ionic-native/geolocation';
+import 'rxjs/add/operator/filter';
 /*
   Generated class for the RampList page.
 
@@ -14,14 +14,14 @@ import { RampDetailService } from '../../providers/ramp-detail-service';
 @Component({
   selector: 'page-ramp-list',
   templateUrl: 'ramp-list.html',
-  providers:[RampDetailService]
+  providers:[RampDetailService, Geolocation]
 })
 export class RampListPage {
   ramps: Array<any>;
   rampDetails: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private rampDetailService: RampDetailService) {
+  constructor(private geolocation: Geolocation, public navCtrl: NavController, public navParams: NavParams, private rampDetailService: RampDetailService) {
   	this.getRamps();
-
+  	this.getLocation();
   }
 
   getRamps(){
@@ -30,7 +30,7 @@ export class RampListPage {
         this.ramps = data;
         this.populateRampData(this.ramps);
       }
-    );
+    ); 
 
 
 
@@ -50,9 +50,42 @@ export class RampListPage {
           ramp: ramp
       });
   }
+  getLocation(){
+  	var watchOptions = {
+    maximumAge : 1000,
+    timeout : 3000,
+    enableHighAccuracy: false // may cause errors if true
+  };
+  	/*let watch = this.geolocation.watchPosition(watchOptions);
+watch.subscribe((data: Geoposition) => {
+	console.log(JSON.stringify(data));*/
+	/*this.geolocation.watchPosition(watchOptions)
+                              .filter((p) => p.coords !== undefined) //Filter Out Errors
+                              .subscribe(position => {
+  console.log(position.coords.longitude + ' ' + position.coords.latitude);*/
+	//console.log(data.coords);
+	//console.log(data.coords.longitude);
+ // data can be a set of coordinates, or an error (if an error occurred).
+ // data.coords.latitude
+ // data.coords.longitude 
+ var posOptions = {timeout: 10000, enableHighAccuracy: false};
+  this.geolocation
+    .getCurrentPosition(posOptions)
+    .then(function (position) {
+      var lat  = position.coords.latitude;
+      var long = position.coords.longitude;
+      console.log(lat + ' ' + long);
+    }, function(err) {
+      // error
+  console.log("error getting position data.");
+  console.log(JSON.stringify(err));
+});
+}
+
 
   populateRampData(ramps)
   {
+
     this.rampDetails = [];
     for (let ramp of ramps) {
       this.rampDetailService.getRampData(ramp).subscribe(
