@@ -4,7 +4,6 @@ import { NavController, NavParams } from 'ionic-angular';
 import { RampDetailPage } from '../ramp-detail/ramp-detail';
 import { RampDetailService } from '../../providers/ramp-detail-service';
 import { Geolocation } from '@ionic-native/geolocation';
-import 'rxjs/add/operator/filter';
 /*
   Generated class for the RampList page.
 
@@ -21,7 +20,7 @@ export class RampListPage {
   rampDetails: any;
   constructor(private geolocation: Geolocation, public navCtrl: NavController, public navParams: NavParams, private rampDetailService: RampDetailService) {
   	this.getRamps();
-  	this.getLocation();
+
   }
 
   getRamps(){
@@ -43,6 +42,7 @@ export class RampListPage {
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad RampListPage');
+      this.getLocation();
   }
 
   view_details(ramp) {
@@ -51,11 +51,11 @@ export class RampListPage {
       });
   }
   getLocation(){
-  	var watchOptions = {
-    maximumAge : 1000,
-    timeout : 3000,
-    enableHighAccuracy: false // may cause errors if true
-  };
+  // 	var watchOptions = {
+  //   maximumAge : 1000,
+  //   timeout : 3000,
+  //   enableHighAccuracy: false // may cause errors if true
+  // };
   	/*let watch = this.geolocation.watchPosition(watchOptions);
 watch.subscribe((data: Geoposition) => {
 	console.log(JSON.stringify(data));*/
@@ -68,9 +68,8 @@ watch.subscribe((data: Geoposition) => {
  // data can be a set of coordinates, or an error (if an error occurred).
  // data.coords.latitude
  // data.coords.longitude 
- var posOptions = {timeout: 10000, enableHighAccuracy: false};
   this.geolocation
-    .getCurrentPosition(posOptions)
+    .getCurrentPosition()
     .then(function (position) {
       var lat  = position.coords.latitude;
       var long = position.coords.longitude;

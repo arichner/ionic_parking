@@ -17,10 +17,10 @@ export class RampDetailService {
   }
 
   getRampData(id){
-      return this.http.get('/ramps/'+id).map(res => res.json());
+      return this.http.get('http://35.184.103.50:8080/ramps/'+id).map(res => res.json());
   }
 
   getRampsList(){
-    return this.http.get('/ramps').map(res => res.json());
+    return this.http.get('http://35.184.103.50:8080/ramps').map(res => res.json());
   }
 }

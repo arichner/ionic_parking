@@ -1,5 +1,5 @@
 {
-  "name": "ionic-hello-world",
+  "name": "ionic-parking",
   "author": "Ionic Framework",
   "homepage": "http://ionicframework.com/",
   "private": true,
@@ -22,6 +22,7 @@
     "@ionic-native/ble": "^3.3.0",
     "@ionic-native/core": "^3.3.0",
     "@ionic-native/geolocation": "^3.4.4",
+    "@ionic-native/google-maps": "^3.4.4",
     "@ionic/storage": "2.0.0",
     "angularfire2": "^2.0.0-beta.8",
     "firebase": "^3.7.1",
