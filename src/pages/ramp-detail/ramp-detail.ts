@@ -60,19 +60,11 @@ export class RampDetailPage {
       tilt: 80
     };
 
-    // move the map's camera to position
-    this.map.moveCamera(this.position);
-
     // create new marker
     this.markerOptions = {
       position: this.location,
       title: this.selectedRamp.name
     };
-
-    this.map.addMarker(this.markerOptions)
-        .then((marker: Marker) => {
-          marker.showInfoWindow();
-        });
 
   }
 
