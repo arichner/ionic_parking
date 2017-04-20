@@ -88,7 +88,15 @@ watch.subscribe((data: Geoposition) => {
     this.rampDetails = [];
     for (let ramp of ramps) {
       this.rampDetailService.getRampData(ramp).subscribe(
-        ramp => this.rampDetails.push(ramp),
+        ramp => {
+          this.rampDetailService.getRampAvailability(ramp.id).subscribe(
+            availability => {
+              ramp.availability = ramp.capacity - availability;
+              ramp.percent = 100 - (availability / ramp.capacity * 100);
+              this.rampDetails.push(ramp);
+            }
+          )
+        },
         err => {
           console.log("error in retrieving ramp data!");
         }
