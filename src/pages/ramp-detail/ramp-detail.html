@@ -14,6 +14,17 @@
 
 
 <ion-content padding>
+  <h3>Spot availability</h3>
+  <p>
+    {{ selectedRamp.percent.toPrecision(2) }}% full
+  </p>
+  <p>
+    <progress max="{{ selectedRamp.capacity }}" value="{{ selectedRamp.availability }}"></progress>
+  </p>
+  <button ion-button icon-right (click)="futureAvailability(ramp)">
+    Future availability
+    <ion-icon name="navigate"></ion-icon>
+  </button>
   <h3>Rates</h3>
   <p>Hourly Rate: ${{selectedRamp.hourlyRate}}</p>
   <p>Daily Rate: ${{selectedRamp.dailyRate}}</p>

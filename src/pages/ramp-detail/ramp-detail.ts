@@ -37,6 +37,12 @@ export class RampDetailPage {
     this.loadMap();
   }
 
+  futureAvailability(ramp)
+  {
+    alert("we got it!");
+  }
+
+
 
   loadMap() {
 
