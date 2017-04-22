@@ -10,6 +10,7 @@ import {
     MarkerOptions,
     Marker
 } from '@ionic-native/google-maps';
+import {PredictivePage} from "../predictive/predictive";
 
 /*
   Generated class for the RampDetail page.
@@ -37,9 +38,12 @@ export class RampDetailPage {
     this.loadMap();
   }
 
+
   futureAvailability(ramp)
   {
-    alert("we got it!");
+    this.navCtrl.push(PredictivePage, {
+      ramp: ramp
+    });
   }
 
 

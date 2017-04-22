@@ -21,7 +21,7 @@
   <p>
     <progress max="{{ selectedRamp.capacity }}" value="{{ selectedRamp.availability }}"></progress>
   </p>
-  <button ion-button icon-right (click)="futureAvailability(ramp)">
+  <button ion-button icon-right (click)="futureAvailability(selectedRamp)">
     Future availability
     <ion-icon name="navigate"></ion-icon>
   </button>
