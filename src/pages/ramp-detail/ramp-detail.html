@@ -33,7 +33,14 @@
   <h3>Contact</h3>
   <address>{{ selectedRamp.address }}</address>
   <p>{{selectedRamp.phoneNumber}}</p>
-  <ion-content>
+  <!-- <ion-content>
       <div id="map" style="height:50%;"></div>
+  </ion-content> -->
+  <ion-content *ngIf="eventCount">
+  <h3>Upcoming Events</h3>
+  <ion-list>
+        <ion-item *ngFor="let event of events">{{event}}</ion-item>
+        
+    </ion-list>
   </ion-content>
 </ion-content>

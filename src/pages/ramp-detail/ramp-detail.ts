@@ -25,6 +25,8 @@ import {PredictivePage} from "../predictive/predictive";
 })
 export class RampDetailPage {
   selectedRamp: any;
+  events: string[];
+  eventCount:number;
   map: GoogleMap;
   location: LatLng;
   position: CameraPosition;
@@ -36,6 +38,7 @@ export class RampDetailPage {
 
   ionViewDidLoad() {
     this.loadMap();
+    this.loadEvents();
   }
 
 
@@ -87,5 +90,12 @@ export class RampDetailPage {
       .then((marker: Marker) => {
         marker.showInfoWindow();
       });
+  }
+  loadEvents()
+  {
+    this.events = [];
+    this.events[0] = "Event 1";
+    this.events[1] = "Gophers Football vs. Iowa";
+    this.eventCount = 0;
   }
 }
