@@ -14,5 +14,23 @@
 
 
 <ion-content padding>
-  {{ travelDuration }}
+  <ion-card>
+    <ion-card-header>
+      Estimated arrival time from current location
+    </ion-card-header>
+    <ion-card-content>
+      {{ arriveTime.format('h:mm a') }}
+    </ion-card-content>
+  </ion-card>
+  <div #map id="map" style="height:50%;"></div>
+
+  <button ion-button icon-right (click)="changeDepartureLocation()">
+    Change Departure Time
+    <ion-icon name="time"></ion-icon>
+  </button>
+  <ion-item>
+    <ion-label>Date</ion-label>
+    <ion-datetime displayFormat="h:mm a" pickerFormat="h:mm a" (ionChange)='setArriveTime()' [(ngModel)]="depart_time"></ion-datetime>
+  </ion-item>
+
 </ion-content>

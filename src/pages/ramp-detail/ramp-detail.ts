@@ -37,7 +37,7 @@ export class RampDetailPage {
   }
 
   ionViewDidLoad() {
-    this.loadMap();
+    // this.loadMap();
     this.loadEvents();
   }
 
@@ -51,51 +51,51 @@ export class RampDetailPage {
 
 
 
-  loadMap() {
-
-    // create a new map by passing HTMLElement
-    let element: HTMLElement = document.getElementById('map');
-
-    this.map = this.googleMaps.create(element);
-
-    // listen to MAP_READY event
-    // You must wait for this event to fire before adding something to the map or modifying it in anyway
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => console.log('Map is ready!'));
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => this.reloadMap());
-
-    // create LatLng object
-    this.location = new LatLng(this.selectedRamp.lattitude,this.selectedRamp.longitude);
-
-    // create CameraPosition
-    this.position = {
-      target: this.location,
-      zoom: 15,
-      tilt: 80
-    };
-
-    // create new marker
-    this.markerOptions = {
-      position: this.location,
-      title: this.selectedRamp.name
-    };
-
-  }
-
-  reloadMap()
-  {
-    // move the map's camera to position
-    this.map.moveCamera(this.position);
-
-    this.map.addMarker(this.markerOptions)
-      .then((marker: Marker) => {
-        marker.showInfoWindow();
-      });
-  }
+  // loadMap() {
+  //
+  //   // create a new map by passing HTMLElement
+  //   let element: HTMLElement = document.getElementById('map');
+  //
+  //   this.map = this.googleMaps.create(element);
+  //
+  //   // listen to MAP_READY event
+  //   // You must wait for this event to fire before adding something to the map or modifying it in anyway
+  //   this.map.one(GoogleMapsEvent.MAP_READY).then(() => console.log('Map is ready!'));
+  //   this.map.one(GoogleMapsEvent.MAP_READY).then(() => this.reloadMap());
+  //
+  //   // create LatLng object
+  //   this.location = new LatLng(this.selectedRamp.lattitude,this.selectedRamp.longitude);
+  //
+  //   // create CameraPosition
+  //   this.position = {
+  //     target: this.location,
+  //     zoom: 15,
+  //     tilt: 80
+  //   };
+  //
+  //   // create new marker
+  //   this.markerOptions = {
+  //     position: this.location,
+  //     title: this.selectedRamp.name
+  //   };
+  //
+  // }
+  //
+  // reloadMap()
+  // {
+  //   // move the map's camera to position
+  //   this.map.moveCamera(this.position);
+  //
+  //   this.map.addMarker(this.markerOptions)
+  //     .then((marker: Marker) => {
+  //       marker.showInfoWindow();
+  //     });
+  // }
   loadEvents()
   {
     this.events = [];
     this.events[0] = "Event 1";
     this.events[1] = "Gophers Football vs. Iowa";
-    this.eventCount = 0;
+    this.eventCount = 2;
   }
 }

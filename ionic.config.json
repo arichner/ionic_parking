@@ -9,9 +9,8 @@
     },
     {
       "path": "/maps",
-      "proxyUrl": "http://maps.googleapis.com/maps"
+      "proxyUrl": "https://maps.googleapis.com/maps"
     }
-
   ],
   "typescript": true
 }

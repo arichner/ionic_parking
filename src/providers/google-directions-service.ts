@@ -16,6 +16,10 @@ export class GoogleDirectionsService {
   }
 
   getTravelDuration(starLoc, endLoc, departTime){
-    return this.http.get('https://maps.googleapis.com/maps/api/directions/json?origin='+starLoc.lat+','+starLoc.long+'&destination='+endLoc.lat+','+endLoc.long+'&key=AIzaSyCKhEcCmRcyYs_yL8wYxdgQ3yikSrA7yXs').map(res => res.json());
+    return this.http.get('https://maps.googleapis.com/maps/api/directions/json?origin='+starLoc.lat+','+starLoc.lng+'&destination='+endLoc.lat+','+endLoc.lng+'&key=AIzaSyCKhEcCmRcyYs_yL8wYxdgQ3yikSrA7yXs').map(res => res.json());
   }
+
+
+
+
 }
