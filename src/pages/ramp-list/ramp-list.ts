@@ -64,16 +64,16 @@ export class RampListPage {
     for (let ramp of ramps) {
       this.rampDetailService.getRampData(ramp).subscribe(
         ramp => {
-            ramp.availability = ramp.capacity - 445;
-            ramp.percent = 100 - (ramp.availability / ramp.capacity * 100);
-            this.rampDetails.push(ramp);
-          // this.rampDetailService.getRampAvailability(ramp.id).subscribe(
-          //   availability => {
-          //     ramp.availability = ramp.capacity - availability;
-          //     ramp.percent = 100 - (availability / ramp.capacity * 100);
-          //        this.rampDetails.push(ramp);
-          //   }
-          // )
+            // ramp.availability = ramp.capacity - 445;
+            // ramp.percent = 100 - (ramp.availability / ramp.capacity * 100);
+            // this.rampDetails.push(ramp);
+          this.rampDetailService.getRampAvailability(ramp.id, null).subscribe(
+            availability => {
+              ramp.availability = ramp.capacity - availability;
+              ramp.percent = 100 - (availability / ramp.capacity * 100);
+              this.rampDetails.push(ramp);
+            }
+          )
         },
         err => {
           console.log("error in retrieving ramp data!");

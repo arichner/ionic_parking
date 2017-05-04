@@ -1,8 +1,8 @@
 import { Component, ViewChild, ElementRef} from '@angular/core';
-import { DatePipe } from '@angular/common';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 
 import { GoogleDirectionsService } from '../../providers/google-directions-service';
+import { RampDetailService } from '../../providers/ramp-detail-service';
 import { Geolocation } from '@ionic-native/geolocation';
 import * as moment from 'moment';
 
@@ -17,7 +17,7 @@ declare var google;
 @Component({
   selector: 'page-predictive',
   templateUrl: 'predictive.html',
-  providers:[GoogleDirectionsService, Geolocation]
+  providers:[GoogleDirectionsService, Geolocation, RampDetailService]
 })
 export class PredictivePage {
   travelDuration:any;
@@ -27,13 +27,13 @@ export class PredictivePage {
   selectedRamp: any;
   @ViewChild('map') mapElement: ElementRef;
   map: any;
-    arriveTime = moment();
+  arriveTime = moment();
 
 
-  constructor(public modalCtrl: ModalController, private geolocation:Geolocation, public navCtrl:NavController, public navParams:NavParams, private googleDirectionsService:GoogleDirectionsService)
+  constructor(private geolocation:Geolocation, public navCtrl:NavController, public navParams:NavParams, private googleDirectionsService:GoogleDirectionsService, private rampDetailService: RampDetailService)
   {
     console.log(this.depart_time);
-      this.selectedRamp = navParams.get('ramp');
+    this.selectedRamp = navParams.get('ramp');
     this.endLoc.lat = parseFloat(this.selectedRamp.lattitude);
     this.endLoc.lng = parseFloat(this.selectedRamp.longitude);
     this.getLocation();
@@ -57,8 +57,18 @@ export class PredictivePage {
 
   setArriveTime()
   {
-
       this.arriveTime = moment(this.depart_time).add(this.travelDuration, 's');
+      this.getAvailability(this.arriveTime.format());
+  }
+
+  getAvailability(arrive_time)
+  {
+      this.rampDetailService.getRampAvailability(this.selectedRamp.id, arrive_time).subscribe(
+          availability => {
+              this.selectedRamp.availability = this.selectedRamp.capacity - availability;
+              this.selectedRamp.percent = 100 - (availability / this.selectedRamp.capacity * 100);
+          }
+      );
   }
 
 
