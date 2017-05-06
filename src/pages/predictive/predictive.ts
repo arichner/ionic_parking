@@ -126,11 +126,11 @@ export class PredictivePage {
     this.geolocation
       .getCurrentPosition()
       .then(function (position) {
-        var lat  = position.coords.latitude;
-        var long = position.coords.longitude;
+        //var lat  = position.coords.latitude;
+        //var long = position.coords.longitude;
 
-        lat = "44.981154";
-        long = "-93.276147";
+        var lat = 44.981154;
+        var long = -93.276147;
 
         self.startLoc.lat = lat;
         self.startLoc.lng = long;
