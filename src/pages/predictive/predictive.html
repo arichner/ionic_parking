@@ -22,10 +22,10 @@
   <ion-item>
       <h2>Estimated availability at arrival time</h2>
       <p>
-        {{ selectedRamp.percent.toPrecision(2) }}% full
+        {{ selectedRamp.percent_full.toPrecision(2) }}% full
       </p>
       <p>
-        <progress max="{{ selectedRamp.capacity }}" value="{{ selectedRamp.availability }}"></progress>
+        <progress max="{{ selectedRamp.capacity }}" value="{{ selectedRamp.spaces_used }}"></progress>
       </p>
   </ion-item>
   <div #map id="map"></div>

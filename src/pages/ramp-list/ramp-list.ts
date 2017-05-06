@@ -69,8 +69,8 @@ export class RampListPage {
             // this.rampDetails.push(ramp);
           this.rampDetailService.getRampAvailability(ramp.id, null).subscribe(
             availability => {
-              ramp.availability = ramp.capacity - availability;
-              ramp.percent = 100 - (availability / ramp.capacity * 100);
+              ramp.spaces_used = ramp.capacity - availability;
+              ramp.percent_full = (ramp.spaces_used / ramp.capacity) * 100;
               this.rampDetails.push(ramp);
             }
           )

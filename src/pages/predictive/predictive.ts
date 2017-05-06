@@ -65,8 +65,8 @@ export class PredictivePage {
   {
       this.rampDetailService.getRampAvailability(this.selectedRamp.id, arrive_time).subscribe(
           availability => {
-              this.selectedRamp.availability = this.selectedRamp.capacity - availability;
-              this.selectedRamp.percent = 100 - (availability / this.selectedRamp.capacity * 100);
+              this.selectedRamp.spaces_used = this.selectedRamp.capacity - availability;
+              this.selectedRamp.percent_full = (this.selectedRamp.spaces_used / this.selectedRamp.capacity) * 100;
           }
       );
   }

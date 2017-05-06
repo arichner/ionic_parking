@@ -16,10 +16,10 @@
 <ion-content padding>
   <h3>Spot availability</h3>
   <p>
-    {{ selectedRamp.percent.toPrecision(2) }}% full
+    {{ selectedRamp.percent_full.toPrecision(2) }}% full
   </p>
   <p>
-    <progress max="{{ selectedRamp.capacity }}" value="{{ selectedRamp.availability }}"></progress>
+    <progress max="{{ selectedRamp.capacity }}" value="{{ selectedRamp.spaces_used }}"></progress>
   </p>
   <button ion-button icon-right (click)="futureAvailability(selectedRamp)">
     Future availability

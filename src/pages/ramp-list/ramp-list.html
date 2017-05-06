@@ -21,9 +21,9 @@
 			<address>{{ramp.address}}</address>
 
 		  <p>
-			  {{ ramp.percent.toPrecision(2) }}% full
+			  {{ ramp.percent_full.toPrecision(2) }}% full
 		  </p>
-		  <progress max="{{ ramp.capacity }}" value="{{ ramp.availability }}"></progress>
+		  <progress max="{{ ramp.capacity }}" value="{{ ramp.spaces_used }}"></progress>
 	</ion-card-content>
   </ion-card>
 </ion-content>
