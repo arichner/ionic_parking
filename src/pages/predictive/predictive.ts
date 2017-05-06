@@ -128,6 +128,10 @@ export class PredictivePage {
       .then(function (position) {
         var lat  = position.coords.latitude;
         var long = position.coords.longitude;
+
+        lat = "44.981154";
+        long = "-93.276147";
+
         self.startLoc.lat = lat;
         self.startLoc.lng = long;
         self.getTravelDuration(self.startLoc, self.endLoc, self.depart_time);
