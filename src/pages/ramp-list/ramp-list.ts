@@ -4,6 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { RampDetailPage } from '../ramp-detail/ramp-detail';
 import { RampDetailService } from '../../providers/ramp-detail-service';
 import { Geolocation } from '@ionic-native/geolocation';
+import * as moment from 'moment';
 /*
   Generated class for the RampList page.
 
@@ -67,7 +68,7 @@ export class RampListPage {
             // ramp.availability = ramp.capacity - 445;
             // ramp.percent = 100 - (ramp.availability / ramp.capacity * 100);
             // this.rampDetails.push(ramp);
-          this.rampDetailService.getRampAvailability(ramp.id, null).subscribe(
+          this.rampDetailService.getRampAvailability(ramp.id, moment().format('YYYY-MM-DDTH:mm:ss') + "-00:00").subscribe(
             availability => {
               ramp.spaces_used = ramp.capacity - availability;
               ramp.percent_full = (ramp.spaces_used / ramp.capacity) * 100;

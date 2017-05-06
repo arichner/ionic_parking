@@ -23,7 +23,7 @@ export class PredictivePage {
   travelDuration:any;
   startLoc = {lat: 90, lng: 90};
   endLoc = {lat: 90, lng: 90};
-  depart_time = moment().format();
+  depart_time = moment().format('YYYY-MM-DDTH:mm:ss') + "-00:00";
   selectedRamp: any;
   @ViewChild('map') mapElement: ElementRef;
   map: any;
@@ -58,7 +58,7 @@ export class PredictivePage {
   setArriveTime()
   {
       this.arriveTime = moment(this.depart_time).add(this.travelDuration, 's');
-      this.getAvailability(this.arriveTime.format());
+      this.getAvailability(this.arriveTime.format('YYYY-MM-DDTH:mm:ss') + "-00:00");
   }
 
   getAvailability(arrive_time)

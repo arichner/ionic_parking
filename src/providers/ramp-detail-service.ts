@@ -26,9 +26,10 @@ export class RampDetailService {
     // return this.http.get('/ramps').map(res => res.json());
   }
   getRampAvailability(id, arrive_time){
+    console.log(arrive_time);
     if(arrive_time)
     {
-      return this.http.get('http://35.184.103.50:8080/ramps/'+id+'/availability?'+arrive_time).map(res => res.json());
+      return this.http.get('http://35.184.103.50:8080/ramps/'+id+'/availability?time='+arrive_time).map(res => res.json());
       // return this.http.get('/ramps/'+id+'/availability').map(res => res.json());
     }
     else
