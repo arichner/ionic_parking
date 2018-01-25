@@ -1,7 +1,5 @@
 {
   "name": "ionic-parking",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -61,5 +59,15 @@
       "locator": "android"
     }
   ],
-  "description": "ionic-parking: An Ionic project"
+  "description": "A cross-platform mobile application created for SENG 5199: Internet of Things in Spring 2017",
+  "contributors": [
+      {
+        "name": "Aaron Richner",
+        "email": "awrichner@gmail.com",
+      },
+      {
+        "name": "Joseph Yarnott",
+        "email": "jyarnott@gmail.com",
+      }
+  ]
 }
